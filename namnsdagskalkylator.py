@@ -5,6 +5,22 @@ import json
 # Läs in namnsdagarna från en fil
 with open('namnsdagar.json', 'r') as file:
     namnsdagar_dict = json.load(file)
+    
+    # Uppslagslista för månadsöversättningar
+    månadsnamn = {
+        "January": "Januari",
+        "February": "Februari",
+        "March": "Mars",
+        "April": "April",
+        "May": "Maj",
+        "June": "Juni",
+        "July": "Juli",
+        "August": "Augusti",
+        "September": "September",
+        "October": "Oktober",
+        "November": "November",
+        "December": "December"
+    }
 
 def advanced_namnsdagskalkylator(namn):
     # Omvandla bokstäverna i namnet till siffror
@@ -40,6 +56,18 @@ def hitta_namnsdag(namn, namnsdagar_dict):
         namnsdag_nummer = advanced_namnsdagskalkylator(namn)
         namnsdag_datum = datetime(2024, 1, 1) + timedelta(days=namnsdag_nummer - 1)
         return namnsdag_datum.strftime('%d %B')
+
+def hitta_namnsdag(namn, namnsdagar_dict):
+    officiell_namnsdag = hitta_officiell_namnsdag(namn, namnsdagar_dict)
+    if officiell_namnsdag:
+        dag, månad = officiell_namnsdag.split()
+        månad_svenska = månadsnamn[månad.capitalize()]
+        return f"{dag} {månad_svenska}"
+    else:
+        namnsdag_nummer = advanced_namnsdagskalkylator(namn)
+        namnsdag_datum = datetime(2024, 1, 1) + timedelta(days=namnsdag_nummer - 1)
+        månad_svenska = månadsnamn[namnsdag_datum.strftime('%B')]
+        return namnsdag_datum.strftime(f'%d {månad_svenska}')
 
 # Exempelanvändning
 namn_input = input("Ange ett namn för att beräkna dess namnsdag: ")
