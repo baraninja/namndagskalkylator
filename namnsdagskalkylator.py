@@ -1,5 +1,10 @@
 import math
 from datetime import datetime, timedelta
+import json
+
+# Läs in namnsdagarna från en fil
+with open('namnsdagar.json', 'r') as file:
+    namnsdagar_dict = json.load(file)
 
 def advanced_namnsdagskalkylator(namn):
     # Omvandla bokstäverna i namnet till siffror
@@ -20,12 +25,23 @@ def advanced_namnsdagskalkylator(namn):
 
     return normalized_value
 
-# Fråga användaren efter ett namn
+def hitta_officiell_namnsdag(namn, namnsdagar_dict):
+    for month, days in namnsdagar_dict.items():
+        for day, names in days.items():
+            if names and namn in names:  # Kontrollera att names inte är None
+                return f"{day} {month}"
+    return None
+
+def hitta_namnsdag(namn, namnsdagar_dict):
+    officiell_namnsdag = hitta_officiell_namnsdag(namn, namnsdagar_dict)
+    if officiell_namnsdag:
+        return officiell_namnsdag
+    else:
+        namnsdag_nummer = advanced_namnsdagskalkylator(namn)
+        namnsdag_datum = datetime(2024, 1, 1) + timedelta(days=namnsdag_nummer - 1)
+        return namnsdag_datum.strftime('%d %B')
+
+# Exempelanvändning
 namn_input = input("Ange ett namn för att beräkna dess namnsdag: ")
-
-# Beräkna namnsdagens nummer
-namnsdag_nummer = advanced_namnsdagskalkylator(namn_input)
-
-# Konvertera numret till ett datum
-namnsdag_datum = datetime(2024, 1, 1) + timedelta(days=namnsdag_nummer - 1)  # Justera för år 2024
-print(f"Namnsdagen för {namn_input} är den {namnsdag_datum.strftime('%d %B')}.")
+namnsdag = hitta_namnsdag(namn_input, namnsdagar_dict)
+print(f"Namnsdagen för {namn_input} är den {namnsdag}.")
