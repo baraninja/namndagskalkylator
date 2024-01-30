@@ -1,7 +1,7 @@
 # Namnsdagskalkylator
 
 ## Översikt
-Detta Python-skript tillhandahåller en unik metod för att beräkna en "namnsdag" för ett givet namn baserat på en avancerad algoritm. Genom att använda en kombination av bokstavsvärdena i ett namn, omvandlar skriptet namnet till ett specifikt datum på året. Denna metod försöker säkerställa att varje namn får en unik namnsdag som är jämnt fördelad över året.
+Detta Python-skript tillhandahåller en unik metod för att beräkna en "namnsdag" för ett givet namn baserat på en avancerad algoritm. Genom att använda en kombination av bokstavsvärdena i ett namn, omvandlar skriptet namnet till ett specifikt datum på året. Denna metod försöker säkerställa att varje namn får en mer eller mindre unik namnsdag.
 
 ## Användning
 För att använda skriptet, kör det helt enkelt i din Python-miljö. Skriptet kommer att be dig ange ett namn och sedan automatiskt beräkna och visa namnsdagen för det namnet.
