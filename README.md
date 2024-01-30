@@ -45,6 +45,20 @@ Detta ger en mer jämn fördelning av namnsdagar genom året.
 ## JSON-Datafil
 Officiella namnsdagar lagras i en JSON-fil (`namnsdagar.json`). Denna fil innehåller en mappning av datum till namn för varje månad.
 
+## Kända Fel och Begränsningar
+
+### Hantering av Svenska Tecken
+För närvarande har scriptet svårigheter att korrekt hantera svenska specialtecken såsom 'ö', 'ä' och 'å' i vissa fall. Detta kan leda till att vissa svenska namn, som innehåller dessa tecken, inte korrekt identifieras i den fördefinierade listan över namnsdagar. Exempel på detta inkluderar namn som "Sören" och "Göran".
+
+#### Orsak
+Problemet uppstår på grund av hur Python hanterar jämförelser av strängar som innehåller svenska tecken. Det finns en komplexitet i att hantera Unicode-tecken jämfört med standard ASCII-tecken.
+
+#### Potentiell Lösning
+En möjlig lösning är att använda en normalisering av strängar för att omvandla svenska tecken till deras närmaste ASCII-representation. Detta skulle dock kunna leda till att distinktionen mellan tecken som 'ö' och 'o' går förlorad, vilket kan vara en betydande begränsning beroende på användningsområdet.
+
+#### Framtida Förbättringar
+Detta är en viktig fråga som vi planerar att adressera i framtida uppdateringar av scriptet. Om du har expertis inom området eller förslag på hur detta kan lösas effektivare, uppmuntras du att bidra till projektet.
+
 ## Bidrag
 Alla bidrag till detta projekt är välkomna. Om du har förslag på förbättringar eller vill rapportera buggar, vänligen skapa ett ärende eller pull-förfrågan.
 
