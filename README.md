@@ -1,7 +1,7 @@
 # Namnsdagskalkylator
 
 ## Översikt
-Detta Python-skript tillhandahåller en unik metod för att beräkna en "namnsdag" för ett givet namn. Skriptet söker först efter namnet i en fördefinierad lista med namnsdagar. Om namnet inte finns i listan, används en avancerad kalkylator för att generera ett namnsdagsdatum.
+Detta Python-skript tillhandahåller en unik metod för att beräkna en "namnsdag" för ett givet namn. Skriptet söker först efter namnet i en fördefinierad lista med namnsdagar. Om namnet inte finns i listan, används en algoritm för att generera ett namnsdagsdatum.
 
 ## Användning
 Kör skriptet och ange ett namn när du uppmanas. Skriptet kommer antingen att returnera den officiella namnsdagen för namnet, om det finns, eller generera en namnsdag baserat på en unik algoritm.
