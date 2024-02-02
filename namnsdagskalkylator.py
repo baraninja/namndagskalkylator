@@ -41,9 +41,10 @@ def advanced_namnsdagskalkylator(namn):
 
 
 def hitta_officiell_namnsdag(namn, namnsdagar_dict):
+    namn_lower = namn.lower()  # Konvertera det inmatade namnet till små bokstäver
     for month, days in namnsdagar_dict.items():
         for day, names in days.items():
-            if names and namn in names:
+            if names and namn_lower in [name.lower() for name in names]:  # Jämför med namn i små bokstäver
                 return f"{day} {month}"
     return None
 
