@@ -69,6 +69,14 @@ def hitta_namnsdag(namn, namnsdagar_dict):
         månad_svenska = månadsnamn[namnsdag_datum.strftime('%B')]
         return namnsdag_datum.strftime(f'%d {månad_svenska}')
 
+while True:
+    namn_input = input("Ange ett namn för att beräkna dess namnsdag (eller skriv 'Quit' för att avsluta): ")
+    if namn_input.lower() == 'quit':
+        print("Programmet avslutas.")
+        break
+    namnsdag = hitta_namnsdag(namn_input, namnsdagar_dict)
+    print(f"Namnsdagen för {namn_input} är den {namnsdag}.")
+
 # Exempelanvändning
 namn_input = input("Ange ett namn för att beräkna dess namnsdag: ")
 namnsdag = hitta_namnsdag(namn_input, namnsdagar_dict)
