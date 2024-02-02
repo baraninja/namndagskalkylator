@@ -51,31 +51,22 @@ def hitta_officiell_namnsdag(namn, namnsdagar_dict):
 def hitta_namnsdag(namn, namnsdagar_dict):
     officiell_namnsdag = hitta_officiell_namnsdag(namn, namnsdagar_dict)
     if officiell_namnsdag:
-        return officiell_namnsdag
-    else:
-        namnsdag_nummer = advanced_namnsdagskalkylator(namn)
-        namnsdag_datum = datetime(2024, 1, 1) + timedelta(days=namnsdag_nummer - 1)
-        return namnsdag_datum.strftime('%d %B')
-
-def hitta_namnsdag(namn, namnsdagar_dict):
-    officiell_namnsdag = hitta_officiell_namnsdag(namn, namnsdagar_dict)
-    if officiell_namnsdag:
         dag, månad = officiell_namnsdag.split()
         månad_svenska = månadsnamn[månad.capitalize()]
-        return f"{dag} {månad_svenska}"
+        return f"Den officiella namnsdagen för {namn} är den {dag} {månad_svenska}."
     else:
         namnsdag_nummer = advanced_namnsdagskalkylator(namn)
         namnsdag_datum = datetime(2024, 1, 1) + timedelta(days=namnsdag_nummer - 1)
         månad_svenska = månadsnamn[namnsdag_datum.strftime('%B')]
-        return namnsdag_datum.strftime(f'%d {månad_svenska}')
-
+        return f"Den inofficiella namnsdagen för {namn} är den {namnsdag_datum.strftime(f'%d {månad_svenska}')}."
+        
 while True:
     namn_input = input("Ange ett namn för att beräkna dess namnsdag (eller skriv 'Quit' för att avsluta): ")
     if namn_input.lower() == 'quit':
         print("Programmet avslutas.")
         break
-    namnsdag = hitta_namnsdag(namn_input, namnsdagar_dict)
-    print(f"Namnsdagen för {namn_input} är den {namnsdag}.")
+    namnsdag_meddelande = hitta_namnsdag(namn_input, namnsdagar_dict)
+    print(namnsdag_meddelande)
 
 # Exempelanvändning
 namn_input = input("Ange ett namn för att beräkna dess namnsdag: ")
